@@ -43,10 +43,10 @@ importers:
         specifier: ^4.17.1
         version: 4.17.21
       '@types/mocha':
-        specifier: ^10.0.1
+        specifier: ^10.0.10
         version: 10.0.10
       mocha:
-        specifier: ^10.2.0
+        specifier: ^10.8.2
         version: 10.8.2
       rimraf:
         specifier: ^5.0.0

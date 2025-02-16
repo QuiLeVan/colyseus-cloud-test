@@ -1,30 +1,41 @@
-import { _decorator, Component, Node } from 'cc';
-import Colyseus, { Room } from 'db://colyseus-sdk/colyseus.js';
-const { ccclass, property } = _decorator;
+import { _decorator, Component } from 'cc';
+import { Room } from 'db://colyseus-sdk/colyseus.js';
+import { ColyseusClient } from './services/ColyseusClient';
+const { ccclass } = _decorator;
 
 @ccclass('LobbyScene')
 export class LobbyScene extends Component {
+    private room!: Room;
+
     async start() {
-        const endpoint = 'ws://localhost:2567';
-        const roomName = "my_room";
-        
-        const client = new Colyseus.Client(endpoint);
-        const room: Room = await client.joinOrCreate(roomName, {
-          // your join options here...
+        await this.connectToLobby();
+    }
+
+    private async connectToLobby() {
+        try {
+            const roomName = "my_room";
+            this.room = await ColyseusClient.getClient().joinOrCreate(roomName, {
+                // your join options here...
+            });
+
+            console.log("joined successfully!");
+            this.setupRoomHandlers();
+        } catch (error) {
+            console.error("Failed to connect to lobby:", error);
+        }
+    }
+
+    private setupRoomHandlers() {
+        this.room.onMessage("message-type", (payload) => {
+            // logic
         });
 
-        console.log("joined successfully!");
-
-        room.onMessage("message-type", (payload) => {
-          // logic
+        this.room.onStateChange((state) => {
+            console.log("state change:", state);
         });
 
-        room.onStateChange((state) => {
-          console.log("state change:", state);
-        });
-
-        room.onLeave((code) => {
-          console.log("left");
+        this.room.onLeave((code) => {
+            console.log("left");
         });
     }
 

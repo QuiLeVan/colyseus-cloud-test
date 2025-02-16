@@ -3,5 +3,9 @@
   "uuid": "17f78ee4-4fc9-471d-9992-0a6bfa9205bd",
   "creator": {
     "version": "3.8.4"
+  },
+  "dependencies": {
+    "@colyseus/schema": "^2.0.36",
+    "protobufjs": "^7.4.0"
   }
 }

@@ -1,7 +1,7 @@
 import { _decorator, Component, Node } from 'cc';
 import { ColyseusClient } from '../services/ColyseusClient';
 import { Room } from 'db://colyseus-sdk/colyseus.js';
-import { GameState } from 'db://shared/DominoRoomSchema';
+import { GameState } from "@shared/DominoRoomSchema";
 const { ccclass, property } = _decorator;
 
 @ccclass("DominoScene")

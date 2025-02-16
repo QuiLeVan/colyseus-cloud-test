@@ -5,6 +5,16 @@
   /* Add your custom configuration here. */
   "compilerOptions": {
     "strict": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "paths": {
+      "db://internal/*": [
+        "/Applications/Cocos/Creator/3.8.4/CocosCreator.app/Contents/Resources/resources/3d/engine/editor/assets/*"
+      ],
+      "db://assets/*": ["./assets/*"],
+      "db://colyseus-sdk/*": ["./extensions/Colyseus Multiplayer SDK/runtime/*"],
+      "db://shared/*": ["../shared/*"],
+      "@shared/*": ["../shared/*"],
+      "@/*": ["./assets/script/*"]
+    }
   }
 }

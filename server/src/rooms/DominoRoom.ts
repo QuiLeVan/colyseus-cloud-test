@@ -19,7 +19,7 @@ export class DominoRoom extends Room<GameState> {
 
   onCreate() {
     this.setState(new GameState()); // Initialize the room state
-    
+
     this.onMessage("bet", (client: Client, message: { amount: number }) => {
       const player = this.state.players.get(client.sessionId);
       if (player) {
@@ -29,6 +29,7 @@ export class DominoRoom extends Room<GameState> {
   }
 
   onJoin(client: Client) {
+    console.log(client.sessionId, "joined! [Domino Room]");
     const player = new Player();
     player.id = client.sessionId;
     player.chips = 1000; // Default chips
@@ -36,6 +37,11 @@ export class DominoRoom extends Room<GameState> {
   }
 
   onLeave(client: Client) {
+    console.log(client.sessionId, "left! [Domino Room]");
     this.state.players.delete(client.sessionId);
+  }
+
+  onDispose() {
+    console.log("room", this.roomId, "disposing... [Domino Room]");
   }
 }

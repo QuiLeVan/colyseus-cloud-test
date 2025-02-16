@@ -15,15 +15,15 @@ export class MyRoom extends Room<MyRoomState> {
   }
 
   onJoin (client: Client, options: any) {
-    console.log(client.sessionId, "joined!");
+    console.log(client.sessionId, "joined! [Lobby Room]");
   }
 
   onLeave (client: Client, consented: boolean) {
-    console.log(client.sessionId, "left!");
+    console.log(client.sessionId, "left! [Lobby Room]");
   }
 
   onDispose() {
-    console.log("room", this.roomId, "disposing...");
+    console.log("room", this.roomId, "disposing... [Lobby Room]");
   }
 
 }

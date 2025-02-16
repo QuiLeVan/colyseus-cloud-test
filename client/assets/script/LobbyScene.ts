@@ -1,4 +1,4 @@
-import { _decorator, Component } from 'cc';
+import { _decorator, Component, director } from 'cc';
 import { Room } from 'db://colyseus-sdk/colyseus.js';
 import { ColyseusClient } from './services/ColyseusClient';
 const { ccclass } = _decorator;
@@ -41,6 +41,11 @@ export class LobbyScene extends Component {
 
     update(deltaTime: number) {
         
+    }
+
+    public OpenDominoRoom() {
+        // Switch to the Domino scene
+        director.loadScene("DominoScene");
     }
 }
 

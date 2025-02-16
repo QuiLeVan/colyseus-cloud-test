@@ -40,5 +40,9 @@ export class DominoScene extends Component {
       console.log("left");
     });
   }
+
+  public Bet() {
+    this.room.send("bet", { amount: 10 });
+  }
 }
 

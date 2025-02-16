@@ -1,11 +1,12 @@
 import { _decorator, Component, Node } from 'cc';
 import { ColyseusClient } from '../services/ColyseusClient';
 import { Room } from 'db://colyseus-sdk/colyseus.js';
+import { GameState } from 'db://shared/DominoRoomSchema';
 const { ccclass, property } = _decorator;
 
 @ccclass("DominoScene")
 export class DominoScene extends Component {
-  private room!: Room;
+  private room!: Room<GameState>;
 
   start() {
     this.connectToDominoRoom();
@@ -32,8 +33,13 @@ export class DominoScene extends Component {
       // logic
     });
 
-    this.room.onStateChange((state) => {
-      console.log("state change:", state);
+    this.room.onStateChange((state: GameState) => {
+      console.log("state change:", JSON.stringify(state));
+
+      console.log("current turn:", state.currentTurn);
+      console.log("sessionId:", this.room.sessionId);
+      const player = state.players.get(this.room.sessionId);
+      console.log("player chips:", player?.chips);
     });
 
     this.room.onLeave((code) => {

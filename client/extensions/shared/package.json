@@ -1,0 +1,16 @@
+{
+  "name": "shared",
+  "package_version": 2,
+  "version": "0.0.1",
+  "description": "Colyseus Shared Code",
+  "author": "QuiLv",
+  "main": "browser.js",
+  "contributions": {
+    "asset-db": {
+      "mount": {
+        "path": "../../../shared",
+        "readonly": true
+      }
+    }
+  }
+}

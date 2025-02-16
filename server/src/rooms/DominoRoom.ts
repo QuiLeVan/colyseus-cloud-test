@@ -1,7 +1,7 @@
 import { Room, Client } from "colyseus";
 import { Schema, type, MapSchema } from "@colyseus/schema";
-import { Player as SharedPlayer } from "../../../shared/DominoRoomSchema";
-import { getRandomInt } from "../../../shared/utils";
+import { Player as SharedPlayer } from "@shared/DominoRoomSchema";
+import { getRandomInt } from "@shared/utils";
 
 // 🎯 Define the player state
 class Player extends Schema {

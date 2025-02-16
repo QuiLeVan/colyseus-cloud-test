@@ -1,5 +1,7 @@
 import { Room, Client } from "colyseus";
 import { Schema, type, MapSchema } from "@colyseus/schema";
+import { Player as SharedPlayer } from "../../../shared/DominoRoomSchema";
+import { getRandomInt } from "../../../shared/utils";
 
 // 🎯 Define the player state
 class Player extends Schema {
@@ -22,6 +24,7 @@ export class DominoRoom extends Room<GameState> {
 
     this.onMessage("bet", (client: Client, message: { amount: number }) => {
       const player = this.state.players.get(client.sessionId);
+      console.log("bet", getRandomInt(1, 100));
       if (player) {
         player.chips -= message.amount;
       }

@@ -6,14 +6,20 @@ import { playground } from "@colyseus/playground";
  * Import your Room files
  */
 import { MyRoom } from "./rooms/MyRoom";
+import { DominoRoom } from "./rooms/DominoRoom";
+import { PokerRoom } from "./rooms/PokerRoom";
+import { MessageHandler } from "@shared/protobuf/MessageHandler";
 
 export default config({
 
-    initializeGameServer: (gameServer) => {
+    initializeGameServer: async (gameServer) => {
+        await MessageHandler.initialize();
         /**
          * Define your room handlers:
          */
         gameServer.define('my_room', MyRoom);
+        gameServer.define("domino_room", DominoRoom);
+        gameServer.define("poker_room", PokerRoom);
 
     },
 

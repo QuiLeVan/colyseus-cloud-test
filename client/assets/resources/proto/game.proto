@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package game;
+
+// Message for game actions
+message GameAction {
+  string actionType = 1;
+  oneof payload {
+    PlayCardAction playCard = 2;
+    DrawCardAction drawCard = 3;
+    // Add more actions as needed
+  }
+}
+
+message PlayCardAction {
+  int32 cardId = 1;
+  string playerId = 2;
+}
+
+message DrawCardAction {
+  string playerId = 1;
+}

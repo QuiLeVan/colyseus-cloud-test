@@ -21,9 +21,8 @@ export class MessageHandler {
 
     private static async initializeClient(): Promise<void> {
         return new Promise((resolve, reject) => {
-            // Use the global cc namespace directly since CocosCreator injects it
             const { resources, TextAsset } = cc;
-            resources.load<TextAsset>('proto/game', TextAsset, (err, protoFile) => {
+            resources.load('proto/game', TextAsset, (err, protoFile) => {
                 if (err) {
                     console.error('Failed to load proto file:', err);
                     reject(err);

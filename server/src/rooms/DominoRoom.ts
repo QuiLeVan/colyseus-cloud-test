@@ -12,7 +12,7 @@ class Player extends Schema implements IPlayer {
 
 // Base schema class that implements the shared interface
 class GameState extends Schema implements IGameState {
-  @type({ map: Player }) players = new MapSchema<Player>();
+  @type({ map: Player }) players = new MapSchema<IPlayer>();
   @type("string") currentTurn: string = "";
 }
 
